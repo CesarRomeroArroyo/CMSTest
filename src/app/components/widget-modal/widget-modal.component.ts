@@ -14,6 +14,6 @@ export class WidgetModalComponent implements OnInit {
 
   showRender(){}
 
-  addWidget(){}
+  addWidget(type: string){}
 
 }
