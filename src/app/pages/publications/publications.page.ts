@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Widget } from '../../core/models/widget.model';
 import { WidgetTypeEnum } from 'src/app/core/enums/widget-type.enum';
+import { ReactiveService } from '../../core/services/reactive.service';
+
 @Component({
   selector: 'app-publications',
   templateUrl: './publications.page.html',
   styleUrls: ['./publications.page.scss']
 })
-export class PublicationsComponent implements OnInit {
+export class PublicationsComponent implements OnInit, OnDestroy {
   components: Widget[] = [];
-  constructor() { }
+  constructor(
+    private reactive: ReactiveService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.reactive.closeObservable();
+    
   }
 
   addWidget(type){
@@ -54,11 +63,11 @@ export class PublicationsComponent implements OnInit {
   }
 
   showRender(){
-
+    this.reactive.setData({renderModal: true});
   }
 
   showModalWidget() {
-    
+    this.reactive.setData({widgetModal: true});
   }
 
 }

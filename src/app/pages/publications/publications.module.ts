@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { PublicationsPageRoutingModule } from './publications-routing.module';
 
 import { PublicationsComponent } from './publications.page';
+import { ComponentsModule } from '../../components/components.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    PublicationsPageRoutingModule
+    PublicationsPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [PublicationsComponent]
 })
