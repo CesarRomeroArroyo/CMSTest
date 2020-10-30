@@ -6,7 +6,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ReactiveService {
 
-  // tslint:disable-next-line: ban-types
   private subject = new BehaviorSubject<Object>({});
   private data: any = { state: [] };
 

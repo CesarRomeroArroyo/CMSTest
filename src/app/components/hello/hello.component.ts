@@ -9,7 +9,7 @@ export class HelloComponent implements OnInit {
 
   @Input() user = 'Cesar Romero Arroyo';
   @Input() background = 'var(--white)';
-
+  currentDate = new Date();
   constructor() { }
 
   ngOnInit(): void {

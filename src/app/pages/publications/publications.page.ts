@@ -62,7 +62,6 @@ export class PublicationsComponent implements OnInit, OnDestroy {
   }
 
   public showRender(): void {
-    // tslint:disable-next-line: no-unused-expression
     this.components.length > 0 ? this.reactive.setData({ renderModal: true }) : null;
   }
 
