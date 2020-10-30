@@ -1,16 +1,17 @@
 .manage{
     width: 100%;
-    height: 100vh;
     padding-top: 16px;
     display: flex;
-    flex-direction: row;   
+    flex-direction: row;
+    margin-bottom: 60px;
     &__creator{
         width: 100%;
         height: 90vh;
         margin-right: 10px;
-        background: white;
+        
         display: flex;
         flex-direction: column;
+        position: relative;
         &__form{
             height: 90vh;
             padding: 16px;
@@ -41,6 +42,10 @@
                 top: -10px;
                 right: -9px;
             }
+            &__space{
+                width: 100%;
+                height: 80px;
+            }
         }
         &__add{
             padding: 16px;
@@ -48,9 +53,8 @@
             width: 100%;
             justify-content: center;
             &__btn{
-                width: 70px;
+                width: 100%;
                 height: 70px;
-                border-radius: 50%;
                 background-color: darkblue;
                 color: white;
                 display: flex;
@@ -63,3 +67,17 @@
     }
 }
 
+.fbtn{
+    background-color: darkblue;
+    color: white;
+    width: 70px;
+    height: 75px;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    font-size: 18px;
+}

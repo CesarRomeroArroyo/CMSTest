@@ -26,16 +26,16 @@
                 <div class="manage__creator__form__close" (click)="removeWidget(component)">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </div> 
-                componente hello 
+                <app-hello></app-hello>
               </div>
-            </ng-container>
-            <button (click)="showRender()" >
-                <i class="fa fa-cog fa-spin" aria-hidden="true"></i> Render
-            </button>
+            </ng-container>            
         </div>
       </div>
     </div>
   </div>
-
+</div>
+<div class="fbtn" (click)="showRender()" >
+  <i class="fa fa-cog fa-spin" aria-hidden="true"></i> 
+</div>
   <app-widget-modal></app-widget-modal>
   
