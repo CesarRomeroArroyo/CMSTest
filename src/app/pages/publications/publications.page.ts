@@ -44,6 +44,7 @@ export class PublicationsComponent implements OnInit, OnDestroy {
 
   showRender(){
     this.reactive.setData({renderModal: true});
+    console.log(this.components);
   }
 
   showModalWidget() {
