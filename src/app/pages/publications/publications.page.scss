@@ -25,7 +25,8 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                border: 1px solid rgba($color: #797979, $alpha: 1.0);
+                border: 1px solid #797979;
+                margin-bottom: 10px;
             }
             &__close{
                 position: absolute;
@@ -46,6 +47,17 @@
             display: flex;
             width: 100%;
             justify-content: center;
+            &__btn{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background-color: darkblue;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+            }
         }
     }
 }
