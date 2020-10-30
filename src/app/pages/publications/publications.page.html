@@ -2,13 +2,12 @@
     <div class="content__container">
       <div class="manage">
         <div class="manage__creator" >
-          <div class="manage__creator__form"  >
-            
-            <div class="manage__creator__add">
-              <div class="manage__creator__add__btn" (click)="showModalWidget()">
-                <i class="fa fa-plus"></i>
-              </div>
+          <div class="manage__creator__add">
+            <div class="manage__creator__add__btn" (click)="showModalWidget()">
+              <i class="fa fa-plus"></i>
             </div>
+          </div>
+          <div class="manage__creator__form">
             <ng-container *ngFor="let component of components">
               <div class="manage__creator__form__component" *ngIf="component.type == '1'" >
                 <div class="manage__creator__form__close" (click)="removeWidget(component)">
