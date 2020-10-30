@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
 import { Widget } from '../../core/models/widget.model';
 import { WidgetTypeEnum } from 'src/app/core/enums/widget-type.enum';
 import { ReactiveService } from '../../core/services/reactive.service';
@@ -9,16 +10,19 @@ import { ReactiveService } from '../../core/services/reactive.service';
   styleUrls: ['./publications.page.scss']
 })
 export class PublicationsComponent implements OnInit, OnDestroy {
-  components: Widget[] = [];
-  user = 'Cesar Romero Arroyo';
+
+  public components: Widget[] = [];
+  public user = 'Cesar Romero Arroyo';
+
   constructor(
     private reactive: ReactiveService
   ) { }
 
   ngOnInit(): void {
-    this.reactive.getObservable().subscribe((data) => {
-      if(data['widgets']) {
-        this.components = data['widgets'];
+    this.reactive.getObservable().subscribe((data: any) => {
+      if (data.widgets) {
+        const dataW = data.widgets;
+        this.components = dataW;
       }
     });
   }
@@ -27,30 +31,43 @@ export class PublicationsComponent implements OnInit, OnDestroy {
     this.reactive.closeObservable();
   }
 
-  removeWidget(comp: Widget){
+  get validate(): boolean {
+    return this.components.length > 0 ? false : true;
+  }
+
+  public validFile(component: Widget): boolean {
+    return component.type === WidgetTypeEnum.Image.toString() ? true : false;
+  }
+  public validText(component: Widget): boolean {
+    return component.type === WidgetTypeEnum.Text.toString() ? true : false;
+  }
+  public validHello(component: Widget): boolean {
+    return component.type === WidgetTypeEnum.Hello.toString() ? true : false;
+  }
+
+  public removeWidget(comp: Widget): void {
     this.components = this.components.filter((c) => {
       return c.name !== comp.name;
     });
-    this.reactive.setData({widgets: this.components});
+    this.reactive.setData({ widgets: this.components });
   }
 
-  public handleUpload(event, component) {
+  public handleUpload(event, component): void {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-        console.log(reader.result);
-        component.value = reader.result;
+      component.value = reader.result;
     };
   }
 
-  showRender(){
-    this.reactive.setData({renderModal: true});
-    console.log(this.components);
+  public showRender(): void {
+    // tslint:disable-next-line: no-unused-expression
+    this.components.length > 0 ? this.reactive.setData({ renderModal: true }) : null;
   }
 
-  showModalWidget() {
-    this.reactive.setData({widgetModal: true});
+  public showModalWidget(): void {
+    this.reactive.setData({ widgetModal: true });
   }
 
 }

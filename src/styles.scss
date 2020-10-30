@@ -1,12 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color: darkgray;
-    margin: 0;
-  padding: 0;;
+@import './styles/variables.scss';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--gray);
+  margin: 0;
+  padding: 0;
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--gradient);
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--white);
+    border-radius: 4px;
+  }
 }
 
-input, textarea{
+input,
+textarea {
   width: 100%;
-  background-color: white;
+  background-color: var(--white);
+}
+
+textarea {
+  padding: 16px 0px 0px 16px;
 }

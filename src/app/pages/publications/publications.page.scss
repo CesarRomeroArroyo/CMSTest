@@ -1,87 +1,100 @@
-.manage{
+@import '../../../styles/mixin.scss';
+
+.manage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  @include flex($justifyContent: center);
+  .creator {
     width: 100%;
-    display: flex;
-    flex-direction: row;   
-    position: relative; 
-    &__creator{
-        width: 100%;
-        display: flex;
-        flex-direction: column;       
-        &__add{
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            position: fixed;
-            top: 0px;
-            z-index: 999;
-            &__btn{
-                width: 100%;
-                height: 70px;
-                background-color: darkblue;
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 18px;
-                box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            }
-        }
-        &__form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;   
-            position: relative;
-            top: 70px;
-            padding: 16px;
-            &__component{
-                width: 100%;
-                margin-top: 10px;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                border: 1px solid #797979;
-                margin-bottom: 10px;
-            }
-            &__close{
-                position: absolute;
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background: #184c6e;
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                top: -10px;
-                right: -9px;
-            }
-            &__space{
-                width: 100%;
-                height: 80px;
-            }
-        }
-    }
+    @include flex($direction: column);
+  }
 }
 
-.fbtn{
-    background-color: darkblue;
-    color: white;
-    width: 70px;
+.add {
+  width: 100%;
+  top: 0px;
+  z-index: 10;
+  position: fixed;
+  height: 100px;
+  cursor: pointer;
+  @include flex(center, center);
+  .btn {
+    width: 400px;
+    height: 70px;
+    font-size: 24px;
+    padding: 0px 16px;
+    border-radius: 16px;
+    color: var(--white);
+    background-color: var(--color-primary);
+    @include flex(center, center);
+    @include box-shadow-black();
+  }
+}
+
+.form {
+  padding: 0px 16px;
+  margin-top: 6rem;
+  margin-bottom: 7rem;
+  width: var(--container);
+  @include flex(center, flex-start, column);
+  .component {
+    min-height: 70px;
+    width: 100%;
+    margin: 8px 0px;
+    position: relative;
+    border: 1px solid var(--gray);
+    @include flex(center, center, column);
+    input {
+      padding: 16px 0px 0px 16px;
+      width: -webkit-fill-available;
+      cursor: pointer;
+      @include input()
+    }
+    textarea, app-hello {
+      @include input();
+    }
+  }
+  .close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: -10px;
+    right: -16px;
+    cursor: pointer;
+    color: var(--white);
+    background: var(--color-primary);
+    @include flex(center, center);
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  bottom: 0px;
+  margin-bottom: 16px;
+  @include flex(center, center);
+  .btn {
+    width: 75px;
     height: 75px;
     border-radius: 50%;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    font-size: 18px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--white);
+    background-color: var(--color-primary);
+    @include flex(center, center);
+    @include box-shadow-black();
+    &.disable {
+      background-color: var(--black);
+      color: var(--white);
+      opacity: 0.5;
+    }
+  }
 }
 
-app-hello{
-    width: 100%;
-    height: 100%;
+app-hello {
+  width: 100%;
+  height: 100%;
 }

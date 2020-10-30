@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { WidgetTypeEnum } from 'src/app/core/enums/widget-type.enum';
 import { Widget } from 'src/app/core/models/widget.model';
 import { ReactiveService } from '../../core/services/reactive.service';
@@ -9,26 +10,29 @@ import { ReactiveService } from '../../core/services/reactive.service';
   styleUrls: ['./widget-modal.component.scss']
 })
 export class WidgetModalComponent implements OnInit {
-  show = false;
-  widgets: Widget[] = [];
+
+  public show = false;
+  public widgets: Widget[] = [];
+
   constructor(
     private reactive: ReactiveService
   ) { }
 
   ngOnInit(): void {
     this.reactive.getObservable().subscribe((data) => {
-      this.show = data['widgetModal'];
-      if(data['widgets'])
-        this.widgets = data['widgets'];
+      this.show = data.widgetModal;
+      if (data.widgets) {
+        this.widgets = data.widgets;
+      }
     });
   }
 
-  closeModal(){
-    this.reactive.setData({widgetModal: false});
+  public closeModal(): void  {
+    this.reactive.setData({ widgetModal: false });
   }
 
-  addWidget(type: number){
-    let widget: Widget =  new Widget();
+  public addWidget(type: number): void  {
+    const widget: Widget = new Widget();
     switch (type) {
       case WidgetTypeEnum.Image:
         widget.type = WidgetTypeEnum.Image.toString();
@@ -49,7 +53,7 @@ export class WidgetModalComponent implements OnInit {
         this.widgets.push(widget);
         break;
     }
-    this.reactive.setData({widgets: this.widgets});
+    this.reactive.setData({ widgets: this.widgets });
   }
 
 }

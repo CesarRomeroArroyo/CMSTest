@@ -5,18 +5,18 @@ import { WidgetModalComponent } from './widget-modal/widget-modal.component';
 import { RenderModalComponent } from './render-modal/render-modal.component';
 
 @NgModule({
-	declarations: [
-        HelloComponent,
-        WidgetModalComponent,
-        RenderModalComponent
-    ],
-	imports: [
-        CommonModule,
-	],
-	exports: [
-        HelloComponent,
-        WidgetModalComponent,
-        RenderModalComponent
-	]
+  declarations: [
+    HelloComponent,
+    WidgetModalComponent,
+    RenderModalComponent
+  ],
+  imports: [
+    CommonModule,
+  ],
+  exports: [
+    HelloComponent,
+    WidgetModalComponent,
+    RenderModalComponent
+  ]
 })
 export class ComponentsModule { }

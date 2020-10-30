@@ -1,19 +1,19 @@
-
-
 <div class="modal" *ngIf="show">
-    
-    <div class="modal__tools">
-        <div class="modal__close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
+  <div class="tools">
+    <div class="close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <div class="components">
       <ng-container *ngFor="let component of components">
-        <div class="modal__tools__component" *ngIf="component.type == '1'" >
-          <img [src]="component.value" alt="">
+        <div class="component" *ngIf="validFile(component)">
+          <img [src]="component.value" alt="" *ngIf="validImg(component.value)">
         </div>
-        <div class="modal__tools__component" *ngIf="component.type == '2'" >  
-          <textarea name="component.name" id="" rows="10" placeholder="Agregue el texto " disabled="true"> {{component.value}}</textarea>
+        <div class="component" *ngIf="validText(component)">
+          <textarea name="component.name" id="" rows="10" placeholder="Agregue el texto "
+            disabled="true"> {{component.value}}</textarea>
         </div>
-        <div class="modal__tools__component" *ngIf="component.type == '3'" > 
-          <app-hello [user]="user"></app-hello>
+        <div class="component" *ngIf="validHello(component)">
+          <app-hello [background]="'var(--gray-medium)'"></app-hello>
         </div>
-      </ng-container>  
+      </ng-container>
     </div>
   </div>
+</div>

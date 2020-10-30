@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { Widget } from 'src/app/core/models/widget.model';
+import { WidgetTypeEnum } from 'src/app/core/enums/widget-type.enum';
 import { ReactiveService } from 'src/app/core/services/reactive.service';
-import { WidgetTypeEnum } from '../../core/enums/widget-type.enum';
 
 @Component({
   selector: 'app-render-modal',
@@ -10,25 +10,37 @@ import { WidgetTypeEnum } from '../../core/enums/widget-type.enum';
   styleUrls: ['./render-modal.component.scss']
 })
 export class RenderModalComponent implements OnInit {
-  show = false;
-  components: Widget[] = [];
-  constructor(
-    private reactive: ReactiveService,
-    private sanitizer: DomSanitizer
-  ) { }
+
+  public show = false;
+  public components: Widget[] = [];
+
+  constructor(private reactive: ReactiveService) { }
 
   ngOnInit(): void {
     this.reactive.getObservable().subscribe((data) => {
-      this.show = data['renderModal'];
-      if(data['widgets']) {
-        this.components = data['widgets'];
+      this.show = data.renderModal;
+      if (data.widgets) {
+        this.components = data.widgets;
       }
     });
   }
 
+  public validFile(component: Widget): boolean {
+    return component.type === WidgetTypeEnum.Image.toString() ? true : false;
+  }
+  public validText(component: Widget): boolean {
+    return component.type === WidgetTypeEnum.Text.toString() ? true : false;
+  }
+  public validHello(component: Widget): boolean {
+    return component.type === WidgetTypeEnum.Hello.toString() ? true : false;
+  }
 
-  closeModal(){
-    this.reactive.setData({renderModal: false});
+  public validImg(img: string): boolean {
+    return img.length > 0 ? true : false;
+  }
+
+  public closeModal(): void {
+    this.reactive.setData({ renderModal: false });
   }
 
 }

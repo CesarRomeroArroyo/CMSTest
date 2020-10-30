@@ -6,7 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./hello.component.scss']
 })
 export class HelloComponent implements OnInit {
-  @Input() user: string;
+
+  @Input() user = 'Cesar Romero Arroyo';
+  @Input() background = 'var(--white)';
+
   constructor() { }
 
   ngOnInit(): void {

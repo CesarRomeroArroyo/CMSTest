@@ -1,0 +1,25 @@
+@mixin flex($alignItems: stretch, $justifyContent: flex-start, $direction: row) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  flex-direction: $direction;
+}
+
+@mixin box-shadow-black() {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+@mixin box-shadow-gray() {
+  box-shadow: 0 3px 6px var(--gray), 0 3px 6px var(--black);
+}
+
+@mixin input {
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+
+  &:hover {
+    @include box-shadow-gray()
+  }
+}
+

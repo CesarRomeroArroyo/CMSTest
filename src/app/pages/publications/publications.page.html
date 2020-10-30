@@ -1,41 +1,44 @@
-<div class="content">
-    <div class="content__container">
-      <div class="manage">
-        <div class="manage__creator" >
-          <div class="manage__creator__add">
-            <div class="manage__creator__add__btn" (click)="showModalWidget()">
-              <i class="fa fa-plus"></i>
-            </div>
-          </div>
-          <div class="manage__creator__form">
-            <ng-container *ngFor="let component of components">
-              <div class="manage__creator__form__component" *ngIf="component.type == '1'" >
-                <div class="manage__creator__form__close" (click)="removeWidget(component)">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </div> 
-                <input type="file" name="{{component.name}}" (change)="handleUpload($event, component)" placeholder="Adjunte una imagen">
-              </div>
-              <div class="manage__creator__form__component" *ngIf="component.type == '2'" > 
-                <div class="manage__creator__form__close" (click)="removeWidget(component)">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </div> 
-                <textarea name="component.name" id="" rows="10" placeholder="Agregue el texto " [(ngModel)]="component.value"></textarea>
-              </div>
-              <div class="manage__creator__form__component" *ngIf="component.type == '3'" > 
-                <div class="manage__creator__form__close" (click)="removeWidget(component)">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </div> 
-                <app-hello [user]="user"></app-hello>
-              </div>
-            </ng-container>            
-        </div>
-      </div>
+<div class="manage">
+  <div class="add">
+    <div class="btn" (click)="showModalWidget()">
+      <i class="fa fa-plus"></i>
     </div>
   </div>
+  <div class="form">
+    <ng-container *ngFor="let component of components">
+      <div class="component" *ngIf="validFile(component)">
+        <div class="close" (click)="removeWidget(component)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <input type="file" 
+               id="file" 
+               name="{{component.name}}" 
+               (change)="handleUpload($event, component)"
+               placeholder="Adjunte una imagen">
+      </div>
+      <div class="component" *ngIf="validText(component)">
+        <div class="close" (click)="removeWidget(component)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <textarea name="component.name" 
+                  rows="10" 
+                  placeholder="Agregue el texto "
+                  [(ngModel)]="component.value">
+        </textarea>
+      </div>
+      <div class="component" *ngIf="validHello(component)">
+        <div class="close" (click)="removeWidget(component)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <app-hello [user]="user"></app-hello>
+      </div>
+    </ng-container>
+  </div>
 </div>
-<div class="fbtn" (click)="showRender()" >
-  <i class="fa fa-cog fa-spin" aria-hidden="true"></i> 
+<div class="footer" (click)="showRender()">
+  <div class="btn" [class.disable]="validate">
+    <i class="fa fa-cog fa-spin" aria-hidden="true"></i>
+  </div>
 </div>
 <app-widget-modal></app-widget-modal>
 <app-render-modal></app-render-modal>
-  

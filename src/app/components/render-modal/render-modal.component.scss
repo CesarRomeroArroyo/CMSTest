@@ -1,45 +1,83 @@
+@import '../../../styles/mixin.scss';
+
 .modal {
-    width: 100%;
-    height: 100vh;
-    background: rgba($color: #000000, $alpha: 0.5);
-    position: fixed;
-    top: 0px;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &__close {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: #184c6e;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: -10px;
-        right: -9px;
-    }    
-    &__tools{
-        background: white;
-        height: auto;
-        max-height: 90%;
-        width: 90%;
-        border-radius: 10px;
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;   
-        position: relative;  
-        overflow-y: scroll;
-        overflow-x: hidden;
-        &__component{
-            display: flex;
-            justify-content: center;
-            img{
-                width: 50%;
-            }            
-        }
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 12;
+  background: var(--gradient);
+  @include flex(center, center);
+  @include box-shadow-black();
+  .close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+    z-index: 12;
+    color: var(--white);
+    background: var(--color-primary);
+    @include flex(center, center);
+  }
+}
+
+.tools {
+  height: auto;
+  max-height: 90%;
+  width: 90%;
+  border-radius: 10px;
+  padding: 16px;
+  position: relative;
+  min-height: 400px;
+  background: var(--white);
+  @include flex(stretch, center, column);
+  .components {
+    overflow: auto;
+    padding: 0px 16px;
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
     }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: var(--gray);
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 4px;
+      background: var(--white);
+    }
+    .component {
+      margin-bottom: 16px;
+      @include flex($justifyContent: center);
+      input {
+        padding: 16px 0px 0px 16px;
+        cursor: pointer;
+        @include input();
+        &:hover {
+          box-shadow: none;
+        }
+      }
+      textarea, app-hello {
+        width: 100%;
+        background: var(--gray-medium);
+        color: var(--white);
+        @include input();
+        &:hover {
+          box-shadow: none;
+        }
+      }
+      img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+      }
+      &:first-child {
+        margin-top: 16px;
+      }
+    }
+  }
+  
 }
