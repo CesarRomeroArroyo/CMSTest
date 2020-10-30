@@ -1,7 +1,7 @@
 <div class="content">
     <div class="content__container">
       <div class="manage">
-        <div class="manage__creator" style="overflow-y: scroll;">
+        <div class="manage__creator" >
           <div class="manage__creator__form"  >
             <div class="manage__creator__form__component">
             <div class="manage__creator__add">
@@ -9,21 +9,21 @@
                 <i class="fa fa-plus"></i>
               </div>
             </div>
-            <ng-container *ngFor="let componente of components">
-              <div class="manage__creator__form__component" *ngIf="componente.type == 'img'" >
-                <div class="manage__creator__form__close" (click)="removeWidget(componente)">
+            <ng-container *ngFor="let component of components">
+              <div class="manage__creator__form__component" *ngIf="component.type == '1'" >
+                <div class="manage__creator__form__close" (click)="removeWidget(component)">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </div> 
-                <input type="file" name="{{componente.name}}" (change)="handleUpload($event, componente)" placeholder="Adjunte una imagen">
+                <input type="file" name="{{component.name}}" (change)="handleUpload($event, component)" placeholder="Adjunte una imagen">
               </div>
-              <div class="manage__creator__form__component" *ngIf="componente.type == 'vid'" > 
-                <div class="manage__creator__form__close" (click)="removeWidget(componente)">
+              <div class="manage__creator__form__component" *ngIf="component.type == '2'" > 
+                <div class="manage__creator__form__close" (click)="removeWidget(component)">
                     <i class="fa fa-timesh" aria-hidden="true"></i>
                 </div> 
-                <textarea name="componente.name" id="" rows="10" placeholder="Agregue el texto " [(ngModel)]="componente.value"></textarea>
+                <textarea name="component.name" id="" rows="10" placeholder="Agregue el texto " [(ngModel)]="component.value"></textarea>
               </div>
-              <div class="manage__creator__form__component" *ngIf="componente.type == 'par'" > 
-                <div class="manage__creator__form__close" (click)="removeWidget(componente)">
+              <div class="manage__creator__form__component" *ngIf="component.type == '3'" > 
+                <div class="manage__creator__form__close" (click)="removeWidget(component)">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </div> 
                 componente hello 

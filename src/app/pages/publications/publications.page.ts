@@ -15,41 +15,21 @@ export class PublicationsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.reactive.getObservable().subscribe((data) => {
+      if(data['widgets'])
+        this.components = data['widgets'];
+    });
   }
 
   ngOnDestroy(): void {
     this.reactive.closeObservable();
-    
-  }
-
-  addWidget(type){
-    let widget: Widget =  new Widget();
-    switch (type) {
-      case WidgetTypeEnum.Image:
-        widget.type = WidgetTypeEnum.Image.toString();
-        widget.name = 'component_' + this.components.length;
-        widget.value = '';
-        this.components.push(widget);
-        break;
-      case WidgetTypeEnum.Text:
-        widget.type = WidgetTypeEnum.Text.toString();
-        widget.name = 'component_' + this.components.length;
-        widget.value = '';
-        this.components.push(widget);
-        break;
-      case WidgetTypeEnum.Hello:
-        widget.type = WidgetTypeEnum.Hello.toString();
-        widget.name = 'component_' + this.components.length;
-        widget.value = '';
-        this.components.push(widget);
-        break;
-    }
   }
 
   removeWidget(comp: Widget){
     this.components = this.components.filter((c) => {
       return c.name !== comp.name;
     });
+    this.reactive.setData({widgets: this.components});
   }
 
   public handleUpload(event, component) {

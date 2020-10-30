@@ -24,7 +24,7 @@ export class WidgetModalComponent implements OnInit {
   }
 
   closeModal(){
-    this.reactive.setData({widget: false});
+    this.reactive.setData({widgetModal: false});
   }
 
   addWidget(type: number){
