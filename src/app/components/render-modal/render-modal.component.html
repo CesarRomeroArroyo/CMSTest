@@ -1,1 +1,23 @@
-<p>render-modal works!</p>
+
+<div class="modal" *ngIf="show">
+    <div class="modal__close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
+              
+</div>
+
+<div class="modal" *ngIf="show">
+    <div class="modal__close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <div class="modal__tools">
+      
+      <ng-container *ngFor="let component of components">
+        <div class="modal__tools__component" *ngIf="component.type == '1'" >
+          <img [src]="component.value" alt="">
+        </div>
+        <div class="modal__tools__component" *ngIf="component.type == '2'" >  
+          <textarea name="component.name" id="" rows="10" placeholder="Agregue el texto " disabled="true"> {{component.value}}</textarea>
+        </div>
+        <div class="modal__tools__component" *ngIf="component.type == '3'" > 
+          <app-hello [user]="user"></app-hello>
+        </div>
+      </ng-container>  
+    </div>
+  </div>
