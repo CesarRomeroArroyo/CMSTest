@@ -10,14 +10,16 @@ import { ReactiveService } from '../../core/services/reactive.service';
 })
 export class PublicationsComponent implements OnInit, OnDestroy {
   components: Widget[] = [];
+  user = 'Cesar Romero Arroyo';
   constructor(
     private reactive: ReactiveService
   ) { }
 
   ngOnInit(): void {
     this.reactive.getObservable().subscribe((data) => {
-      if(data['widgets'])
+      if(data['widgets']) {
         this.components = data['widgets'];
+      }
     });
   }
 
