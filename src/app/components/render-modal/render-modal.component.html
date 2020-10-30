@@ -1,13 +1,9 @@
 
-<div class="modal" *ngIf="show">
-    <div class="modal__close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
-              
-</div>
 
 <div class="modal" *ngIf="show">
-    <div class="modal__close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
+    
     <div class="modal__tools">
-      
+        <div class="modal__close" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></div>
       <ng-container *ngFor="let component of components">
         <div class="modal__tools__component" *ngIf="component.type == '1'" >
           <img [src]="component.value" alt="">
